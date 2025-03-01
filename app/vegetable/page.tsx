@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 type Vegetable = {
@@ -22,6 +22,12 @@ export default function Page() {
   const [address, setAddress] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
 
+  useEffect(() => {
+    if (orderPlaced) {
+      alert("✅ Your order has been placed successfully!");
+    }
+  }, [orderPlaced]);
+
   const handleAddToCart = (veg: Vegetable) => {
     const quantity = prompt(`Enter quantity for ${veg.name} (in KG):`, "1");
     if (!quantity || isNaN(Number(quantity)) || Number(quantity) <= 0) return;
@@ -42,15 +48,16 @@ export default function Page() {
 
   const placeOrder = (cod: boolean) => {
     if (!address) {
-      alert("Please enter your delivery address!");
+      alert("❌ Please enter your delivery address!");
       return;
     }
     if (cart.length === 0) {
-      alert("Cart is empty!");
+      alert("❌ Cart is empty!");
       return;
     }
 
     setOrderPlaced(true);
+
     const billText = `🛒 Order Details:\n${cart
       .map((item) => `${item.name} - ${(item.quantity || 0)} KG - ₹${(item.quantity || 0) * item.price}`)
       .join("\n")}\n\nTotal: ₹${totalAmount}\nPayment Method: ${cod ? "Cash on Delivery" : "Online Payment"}\nDelivery Address: ${address}`;
@@ -63,6 +70,8 @@ export default function Page() {
   return (
     <div className="flex flex-col items-center p-6 min-h-screen bg-gray-100">
       <h1 className="text-3xl font-bold text-green-700 mb-6">Fresh Vegetables</h1>
+
+      {/* Vegetable List */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {vegetables.map((veg) => (
           <div key={veg.name} className="bg-white p-4 rounded-lg shadow text-center">
@@ -78,6 +87,8 @@ export default function Page() {
           </div>
         ))}
       </div>
+
+      {/* Cart Section */}
       {cart.length > 0 && (
         <div className="mt-6 w-80 bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-bold">Total: ₹{totalAmount}</h2>
@@ -100,6 +111,13 @@ export default function Page() {
           >
             Cash on Delivery
           </button>
+        </div>
+      )}
+
+      {/* Order Confirmation Message */}
+      {orderPlaced && (
+        <div className="text-green-600 mt-4 font-semibold">
+          ✅ Your order has been placed successfully!
         </div>
       )}
     </div>
