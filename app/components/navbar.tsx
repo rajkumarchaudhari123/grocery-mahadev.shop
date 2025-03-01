@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -13,17 +14,22 @@ export default function Navbar() {
         setDropdownOpen(false);
       }
     };
-  
+
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
-  
 
   return (
     <nav className="bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white py-4 shadow-lg relative">
       <div className="container mx-auto flex justify-between items-center px-6 md:px-12">
         <Link href="/">
-          <img src="/vegetable logo.jpg" alt="Vegetable Logo" className="h-12" />
+          <Image 
+            src="/vegetable logo.jpg" 
+            alt="Vegetable Logo" 
+            width={48} // Adjust width as needed
+            height={48} // Adjust height as needed
+            priority 
+          />
         </Link>
 
         <button
@@ -40,22 +46,19 @@ export default function Navbar() {
             menuOpen ? "flex" : "hidden"
           }`}
         >
-          {[
-            { name: "Home", path: "/" },
-            { name: "About Us", path: "/aboutus" },
-            { name: "Contacts", path: "/contacts" },
-            { name: "Feedback", path: "/feedback" },
-          ].map((item) => (
-            <li key={item.path}>
-              <Link
-                href={item.path}
-                className="block px-6 py-3 text-black lg:text-white hover:text-slate-900 transition-all duration-300"
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
+          {[{ name: "Home", path: "/" }, { name: "About Us", path: "/aboutus" }, { name: "Contacts", path: "/contacts" }, { name: "Feedback", path: "/feedback" }].map(
+            (item) => (
+              <li key={item.path}>
+                <Link
+                  href={item.path}
+                  className="block px-6 py-3 text-black lg:text-white hover:text-slate-900 transition-all duration-300"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            )
+          )}
 
           {/* Shop Now Dropdown */}
           <li className="relative dropdown">
