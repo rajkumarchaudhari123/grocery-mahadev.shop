@@ -11,12 +11,36 @@ type Vegetable = {
 
 export default function Page() {
   const vegetables: Vegetable[] = [
-    { name: "Potato", price: 25, image: "/potato.jpg" },
-    { name: "Onion", price: 30, image: "/onion.jpg" },
-    { name: "Tomato", price: 20, image: "/tomato.jpg" },
-    { name: "Carrot", price: 40, image: "/carrot.jpg" },
-    { name: "Cucumber", price: 15, image: "/cucumber.jpg" },
+    { name: "Potato (आलू)", price: 25, image: "/potato.jpg" },
+    { name: "Onion (प्याज)", price: 30, image: "/onion.jpg" },
+    { name: "Tomato (टमाटर)", price: 20, image: "/tomato.jpg" },
+    { name: "Carrot (गाजर)", price: 40, image: "/carrot.jpg" },
+    { name: "Cucumber (खीरा)", price: 15, image: "/cucumber.jpg" },
+    { name: "Capsicum (शिमला मिर्च)", price: 50, image: "/capsicum.jpg" },
+    { name: "Broccoli (ब्रोकोली)", price: 80, image: "/broccoli.jpg" },
+    { name: "Cauliflower (फूलगोभी)", price: 35, image: "/cauliflower.jpg" },
+    { name: "Spinach (पालक)", price: 20, image: "/spinach.jpg" },
+    { name: "Brinjal (बैंगन)", price: 30, image: "/brinjal.jpg" },
+    { name: "Pumpkin (कद्दू)", price: 25, image: "/pumpkin.jpg" },
+    { name: "Lettuce (सलाद पत्ता)", price: 45, image: "/lettuce.jpg" },
+    { name: "Radish (मूली)", price: 18, image: "/radish.jpg" },
+    { name: "Beetroot (चुकंदर)", price: 35, image: "/beetroot.jpg" },
+    { name: "Mushroom (मशरूम)", price: 100, image: "/mushroom.jpg" },
+    { name: "Sweet Corn (मीठी मकई)", price: 60, image: "/sweetcorn.jpg" },
+    { name: "Green Peas (हरी मटर)", price: 70, image: "/greenpeas.jpg" },
+    { name: "Garlic (लहसुन)", price: 150, image: "/garlic.jpg" },
+    { name: "Ginger (अदरक)", price: 120, image: "/ginger.jpg" },
+    { name: "Bitter Gourd (करेला)", price: 45, image: "/bittergourd.jpg" },
+    { name: "Ladyfinger (भिंडी)", price: 50, image: "/ladyfinger.jpg" },
+    { name: "Cabbage (पत्ता गोभी)", price: 30, image: "/cabbage.jpg" },
+    { name: "Green Beans (हरी फलियां)", price: 55, image: "/greenbeans.jpg" },
+    { name: "Zucchini (जुकीनी)", price: 90, image: "/zucchini.jpg" },
+    { name: "Turnip (शलगम)", price: 40, image: "/turnip.jpg" },
+    { name: "Bell Pepper (शिमला मिर्च)", price: 75, image: "/bellpepper.jpg" },
   ];
+  
+  
+  
 
   const [cart, setCart] = useState<Vegetable[]>([]);
   const [address, setAddress] = useState("");

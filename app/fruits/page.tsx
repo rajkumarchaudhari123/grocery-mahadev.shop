@@ -11,17 +11,30 @@ type Product = {
 
 export default function Page() {
   const products: Product[] = [
-    { name: "Apple", price: 120, image: "/images/apple.jpg" },
-    { name: "Banana", price: 40, image: "/images/banana.jpg" },
-    { name: "Orange", price: 80, image: "/images/orange.jpg" },
-    { name: "Grapes", price: 90, image: "/images/grapes.jpg" },
+    { name: "Apple", price: 120, image: "/apple.jpg" },
+    { name: "Banana", price: 40, image: "/banana.jpg" },
+    { name: "Orange", price: 80, image: "/orange.jpg" },
+    { name: "Grapes", price: 90, image: "/grapes.jpg" },
+    { name: "Mango", price: 150, image: "/mango.jpg" },
+    { name: "Pineapple", price: 100, image: "/pineapple.jpg" },
+    { name: "Strawberry", price: 200, image: "/strawberry.jpg" },
+    { name: "Watermelon", price: 50, image: "/watermelon.jpg" },
+    { name: "Papaya", price: 60, image: "/papaya.jpg" },
+    { name: "Kiwi", price: 140, image: "/kiwi.jpg" },
+    { name: "Pomegranate", price: 180, image: "/pomegranate.jpg" },
+    { name: "Guava", price: 70, image: "/guava.jpg" },
+    { name: "Peach", price: 120, image: "/peach.jpg" },
+    { name: "Plum", price: 130, image: "/plum.jpg" },
+    { name: "Pear", price: 90, image: "/pear.jpg" },
+    { name: "Litchi", price: 160, image: "/litchi.jpg" },
+    { name: "Coconut", price: 50, image: "/coconut.jpg" },
+    { name: "Chikoo", price: 80, image: "/chikoo.jpg" },
+    { name: "Dragon Fruit", price: 250, image: "/dragonfruit.jpg" },
+    { name: "Blueberry", price: 300, image: "/blueberry.jpg" },
   ];
 
   const [cart, setCart] = useState<Product[]>([]);
   const [address, setAddress] = useState("");
-
-  // Temporary usage to avoid ESLint warning
-  console.log(cart, address);
 
   const handleAddToCart = (product: Product) => {
     const quantity = prompt(`Enter quantity for ${product.name} (in KG):`, "1");
@@ -32,7 +45,9 @@ export default function Page() {
       const existingItem = prevCart.find((item) => item.name === product.name);
       if (existingItem) {
         return prevCart.map((item) =>
-          item.name === product.name ? { ...item, quantity: (item.quantity || 0) + parsedQuantity } : item
+          item.name === product.name
+            ? { ...item, quantity: (item.quantity || 0) + parsedQuantity }
+            : item
         );
       }
       return [...prevCart, { ...product, quantity: parsedQuantity }];
@@ -67,17 +82,26 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-gray-100 min-h-screen p-6">
-      <h1 className="text-3xl font-bold text-green-700 mb-6">Fresh Fruits</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="flex flex-col items-center bg-gray-50 min-h-screen p-8">
+      <h1 className="text-4xl font-bold text-green-700 mb-6">Fresh Fruits 🍎🍌</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full max-w-6xl">
         {products.map((product) => (
-          <div key={product.name} className="bg-white p-4 rounded-lg shadow-lg text-center">
-            <Image src={product.image} alt={product.name} width={150} height={150} className="mx-auto mb-2 rounded-lg" />
-            <h2 className="text-xl font-semibold">{product.name}</h2>
-            <p className="text-gray-600">Price: ₹{product.price} / KG</p>
+          <div key={product.name} className="bg-white p-5 rounded-xl shadow-md text-center transition hover:shadow-lg">
+            <div className="relative w-40 h-40 mx-auto mb-3">
+              <Image
+                src={product.image}
+                alt={product.name}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+            <h2 className="text-lg font-semibold">{product.name}</h2>
+            <p className="text-gray-600">₹{product.price} / KG</p>
             <button
               onClick={() => handleAddToCart(product)}
-              className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+              className="mt-4 px-5 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-200"
             >
               Add to Cart
             </button>
@@ -85,42 +109,33 @@ export default function Page() {
         ))}
       </div>
 
-      {/* Bill Section */}
       {cart.length > 0 && (
-        <div className="w-full max-w-lg mt-8 bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-green-700 mb-2">Grocery</h2>
-          <p className="text-gray-500 text-sm">
-            Website: <a href="https://mhadev.shop" className="text-blue-600">mhadev.shop</a>
-          </p>
-          <p className="text-gray-500 text-sm mb-4">Contact: 8800759538</p>
+        <div className="w-full max-w-lg mt-8 bg-white p-6 rounded-xl shadow-lg">
+          <h2 className="text-2xl font-bold text-green-700 mb-2">🛍️ Your Cart</h2>
           <hr className="mb-4" />
-
-          <h3 className="text-xl font-bold mb-3">Your Bill</h3>
-          <ul>
+          <ul className="divide-y">
             {cart.map((item) => (
-              <li key={item.name} className="flex justify-between border-b py-2">
-                <span>{item.quantity} KG {item.name}</span>
-                <span>₹{item.price * (item.quantity || 0)}</span>
+              <li key={item.name} className="flex justify-between py-3">
+                <span className="font-medium">{item.quantity} KG {item.name}</span>
+                <span className="text-green-700 font-semibold">₹{item.price * (item.quantity || 0)}</span>
               </li>
             ))}
           </ul>
-          <div className="mt-4 text-xl font-semibold text-green-800">
+          <div className="mt-4 text-xl font-bold text-green-800">
             Total: ₹{cart.reduce((acc, item) => acc + item.price * (item.quantity || 0), 0)}
           </div>
 
-          {/* Address Input */}
           <input
             type="text"
             placeholder="Enter your delivery address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            className="mt-4 p-2 border rounded w-full"
+            className="mt-4 p-3 border rounded-lg w-full text-gray-700"
           />
 
-          {/* Place Order Button */}
           <button
             onClick={generateBill}
-            className="mt-4 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition w-full"
+            className="mt-4 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition w-full font-medium"
           >
             Place Order on WhatsApp
           </button>
