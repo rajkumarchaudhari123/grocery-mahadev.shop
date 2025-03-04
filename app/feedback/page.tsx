@@ -25,7 +25,7 @@ export default function ContactOptions() {
                 <div className="text-lg font-semibold text-gray-700">
                     <p>Name: <span className="text-green-800">Rajkumar Chaudhari</span></p>
                     <p>Business: <span className="text-green-800">Grocery Order Services</span></p>
-                    <p>Location: <span className="text-green-800">Hong Kong</span></p>
+                    <p>Location: <span className="text-green-800">Noida</span></p>
                 </div>
 
                 {/* Feedback Box */}

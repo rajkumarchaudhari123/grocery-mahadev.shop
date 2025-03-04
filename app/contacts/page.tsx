@@ -10,7 +10,7 @@ export default function ContactOptions() {
                 <div className="text-lg font-semibold text-gray-700">
                     <p>Name: Rajkumar Chaudhari</p>
                     <p>Business: Grocery Order Services</p>
-                    <p>Location: Hong Kong</p>
+                    <p>Location: Noida</p>
                 </div>
                 <a href="tel:+9667048566" className="flex items-center justify-center gap-3 py-3 text-lg font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700">
                     <FaPhone /> Call Us
