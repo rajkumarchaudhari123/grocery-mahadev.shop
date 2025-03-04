@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
@@ -21,16 +22,16 @@ export default function Footer() {
           <h3 className="text-xl font-bold mb-4">Quick Links</h3>
           <ul className="space-y-2">
             <li>
-              <a href="/aboutus" className="hover:underline">About Us</a>
+              <Link href="/aboutus" className="hover:underline">About Us</Link>
             </li>
             <li>
-              <a href="/" className="hover:underline">Home</a>
+              <Link href="/" className="hover:underline">Home</Link>
             </li>
             <li>
-              <a href="/contacts" className="hover:underline">Contact Us</a>
+              <Link href="/contacts" className="hover:underline">Contact Us</Link>
             </li>
             <li>
-              <a href="/faq" className="hover:underline">FAQs</a>
+              <Link href="/faq" className="hover:underline">FAQs</Link>
             </li>
           </ul>
         </div>
