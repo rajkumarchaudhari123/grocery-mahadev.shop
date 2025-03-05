@@ -12,35 +12,30 @@ type Vegetable = {
 export default function Page() {
   const vegetables: Vegetable[] = [
     { name: "Potato (आलू)", price: 25, image: "/potato.jpg" },
-    { name: "Onion (प्याज)", price: 30, image: "/onion.jpg" },
+    { name: "Onion (प्याज)", price: 46, image: "/onion.jpg" },
     { name: "Tomato (टमाटर)", price: 20, image: "/tomato.jpg" },
-    { name: "Carrot (गाजर)", price: 40, image: "/carrot.jpg" },
-    { name: "Cucumber (खीरा)", price: 15, image: "/cucumber.jpg" },
+    { name: "Carrot (गाजर)", price: 30, image: "/carrot.jpg" },
+    { name: "Cucumber (खीरा)", price: 50, image: "/cucumber.jpg" },
     { name: "Capsicum (शिमला मिर्च)", price: 50, image: "/capsicum.jpg" },
-    { name: "Broccoli (ब्रोकोली)", price: 80, image: "/broccoli.jpg" },
-    { name: "Cauliflower (फूलगोभी)", price: 35, image: "/cauliflower.jpg" },
-    { name: "Spinach (पालक)", price: 20, image: "/spinach.jpg" },
+    { name: "Broccoli (ब्रोकोली)", price: 70, image: "/broccoli.jpg" },
+    { name: "Cauliflower (फूलगोभी)", price: 40, image: "/cauliflower.jpg" },
+    { name: "Spinach (पालक)", price: 30, image: "/spinach.jpg" },
     { name: "Brinjal (बैंगन)", price: 30, image: "/brinjal.jpg" },
-    { name: "Pumpkin (कद्दू)", price: 25, image: "/pumpkin.jpg" },
-    { name: "Lettuce (सलाद पत्ता)", price: 45, image: "/lettuce.jpg" },
-    { name: "Radish (मूली)", price: 18, image: "/radish.jpg" },
-    { name: "Beetroot (चुकंदर)", price: 35, image: "/beetroot.jpg" },
-    { name: "Mushroom (मशरूम)", price: 100, image: "/mushroom.jpg" },
+    { name: "Pumpkin (कद्दू)", price: 40, image: "/pumpkin.jpg" },
+    { name: "Radish (मूली)", price: 30, image: "/radish.jpg" },
+    { name: "Beetroot (चुकंदर)", price: 40, image: "/beetroot.jpg" },
+    { name: "Mushroom (मशरूम)", price: 50, image: "/mushroom.jpg" },
     { name: "Sweet Corn (मीठी मकई)", price: 60, image: "/sweetcorn.jpg" },
-    { name: "Green Peas (हरी मटर)", price: 70, image: "/greenpeas.jpg" },
-    { name: "Garlic (लहसुन)", price: 150, image: "/garlic.jpg" },
+    { name: "Green Peas (हरी मटर)", price: 50, image: "/greenpeas.jpg" },
+    { name: "Garlic (लहसुन)", price: 300, image: "/garlic.jpg" },
     { name: "Ginger (अदरक)", price: 120, image: "/ginger.jpg" },
     { name: "Bitter Gourd (करेला)", price: 45, image: "/bittergourd.jpg" },
-    { name: "Ladyfinger (भिंडी)", price: 50, image: "/ladyfinger.jpg" },
+    { name: "Ladyfinger (भिंडी)", price: 90, image: "/ladyfinger.jpg" },
     { name: "Cabbage (पत्ता गोभी)", price: 30, image: "/cabbage.jpg" },
-    { name: "Green Beans (हरी फलियां)", price: 55, image: "/greenbeans.jpg" },
-    { name: "Zucchini (जुकीनी)", price: 90, image: "/zucchini.jpg" },
+    { name: "Green Beans (हरी फलियां)", price: 60, image: "/greenbeans.jpg" },
     { name: "Turnip (शलगम)", price: 40, image: "/turnip.jpg" },
-    { name: "Bell Pepper (शिमला मिर्च)", price: 75, image: "/bellpepper.jpg" },
+    { name: "Bell Pepper (शिमला मिर्च)", price: 250, image: "/bellpepper.jpg" },
   ];
-  
-  
-  
 
   const [cart, setCart] = useState<Vegetable[]>([]);
   const [address, setAddress] = useState("");
@@ -53,8 +48,11 @@ export default function Page() {
   }, [orderPlaced]);
 
   const handleAddToCart = (veg: Vegetable) => {
-    const quantity = prompt(`Enter quantity for ${veg.name} (in KG):`, "1");
-    if (!quantity || isNaN(Number(quantity)) || Number(quantity) <= 0) return;
+    const quantity = prompt(`Enter quantity for ${veg.name} (Choose: 0.25, 0.5, or 1 KG):`, "1");
+    if (!quantity || isNaN(Number(quantity)) || ![0.25, 0.5, 1].includes(Number(quantity))) {
+      alert("❌ Please enter a valid quantity (0.25, 0.5, or 1 KG)");
+      return;
+    }
 
     const parsedQuantity = parseFloat(quantity);
     setCart((prevCart) => {
@@ -95,7 +93,6 @@ export default function Page() {
     <div className="flex flex-col items-center p-6 min-h-screen bg-gray-100">
       <h1 className="text-3xl font-bold text-green-700 mb-6">Fresh Vegetables</h1>
 
-      {/* Vegetable List */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {vegetables.map((veg) => (
           <div key={veg.name} className="bg-white p-4 rounded-lg shadow text-center">
@@ -112,7 +109,6 @@ export default function Page() {
         ))}
       </div>
 
-      {/* Cart Section */}
       {cart.length > 0 && (
         <div className="mt-6 w-80 bg-white p-4 rounded-lg shadow">
           <h2 className="text-xl font-bold">Total: ₹{totalAmount}</h2>
@@ -135,13 +131,6 @@ export default function Page() {
           >
             Cash on Delivery
           </button>
-        </div>
-      )}
-
-      {/* Order Confirmation Message */}
-      {orderPlaced && (
-        <div className="text-green-600 mt-4 font-semibold">
-          ✅ Your order has been placed successfully!
         </div>
       )}
     </div>

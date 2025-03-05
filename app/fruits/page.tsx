@@ -37,8 +37,11 @@ export default function Page() {
   const [address, setAddress] = useState("");
 
   const handleAddToCart = (product: Product) => {
-    const quantity = prompt(`Enter quantity for ${product.name} (in KG):`, "1");
-    if (!quantity || isNaN(Number(quantity)) || Number(quantity) <= 0) return;
+    const quantity = prompt(`Enter quantity for ${product.name} (Choose: 0.5 or 1 KG):`, "1");
+    if (!quantity || isNaN(Number(quantity)) || ![0.5, 1].includes(Number(quantity))) {
+      alert("❌ Please enter a valid quantity (0.5 or 1 KG)");
+      return;
+    }
 
     const parsedQuantity = parseFloat(quantity);
     setCart((prevCart) => {
