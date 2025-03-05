@@ -11,26 +11,16 @@ type Product = {
 
 export default function Page() {
   const products: Product[] = [
-    { name: "Apple", price: 120, image: "/apple.jpg" },
-    { name: "Banana", price: 40, image: "/banana.jpg" },
-    { name: "Orange", price: 80, image: "/orange.jpg" },
-    { name: "Grapes", price: 90, image: "/grapes.jpg" },
-    { name: "Mango", price: 150, image: "/mango.jpg" },
-    { name: "Pineapple", price: 100, image: "/pineapple.jpg" },
-    { name: "Strawberry", price: 200, image: "/strawberry.jpg" },
-    { name: "Watermelon", price: 50, image: "/watermelon.jpg" },
+    { name: "Apple", price: 230, image: "/apple.jpg" },
+    { name: "Banana", price: 70, image: "/banana.jpg" },
+    { name: "Orange", price: 130, image: "/orange.jpg" },
+    { name: "Grapes", price: 140, image: "/grapes.jpg" },
+    { name: "Watermelon", price: 40, image: "/watermelon.jpg" },
     { name: "Papaya", price: 60, image: "/papaya.jpg" },
-    { name: "Kiwi", price: 140, image: "/kiwi.jpg" },
-    { name: "Pomegranate", price: 180, image: "/pomegranate.jpg" },
-    { name: "Guava", price: 70, image: "/guava.jpg" },
-    { name: "Peach", price: 120, image: "/peach.jpg" },
-    { name: "Plum", price: 130, image: "/plum.jpg" },
-    { name: "Pear", price: 90, image: "/pear.jpg" },
-    { name: "Litchi", price: 160, image: "/litchi.jpg" },
-    { name: "Coconut", price: 50, image: "/coconut.jpg" },
+    { name: "Pomegranate", price: 240, image: "/pomegranate.jpg" },
+    { name: "Guava (special)", price: 140, image: "/guava.jpg" },
+    { name: "Coconut", price: 55, image: "/coconut.jpg" },
     { name: "Chikoo", price: 80, image: "/chikoo.jpg" },
-    { name: "Dragon Fruit", price: 250, image: "/dragonfruit.jpg" },
-    { name: "Blueberry", price: 300, image: "/blueberry.jpg" },
   ];
 
   const [cart, setCart] = useState<Product[]>([]);
