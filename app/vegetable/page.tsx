@@ -4,6 +4,7 @@ import Image from "next/image";
 
 type Vegetable = {
   name: string;
+  originalPrice: number;
   price: number;
   image: string;
   quantity?: number;
@@ -11,30 +12,30 @@ type Vegetable = {
 
 export default function Page() {
   const vegetables: Vegetable[] = [
-    { name: "Potato (आलू)", price: 25, image: "/potato.jpg" },
-    { name: "Onion (प्याज)", price: 46, image: "/onion.jpg" },
-    { name: "Tomato (टमाटर)", price: 20, image: "/tomato.jpg" },
-    { name: "Carrot (गाजर)", price: 30, image: "/carrot.jpg" },
-    { name: "Cucumber (खीरा)", price: 50, image: "/cucumber.jpg" },
-    { name: "Capsicum (शिमला मिर्च)", price: 50, image: "/capsicum.jpg" },
-    { name: "Broccoli (ब्रोकोली)", price: 70, image: "/broccoli.jpg" },
-    { name: "Cauliflower (फूलगोभी)", price: 40, image: "/cauliflower.jpg" },
-    { name: "Spinach (पालक)", price: 30, image: "/spinach.jpg" },
-    { name: "Brinjal (बैंगन)", price: 30, image: "/brinjal.jpg" },
-    { name: "Pumpkin (कद्दू)", price: 40, image: "/pumpkin.jpg" },
-    { name: "Radish (मूली)", price: 30, image: "/radish.jpg" },
-    { name: "Beetroot (चुकंदर)", price: 40, image: "/beetroot.jpg" },
-    { name: "Mushroom (मशरूम)", price: 50, image: "/mushroom.jpg" },
-    { name: "Sweet Corn (मीठी मकई)", price: 60, image: "/sweetcorn.jpg" },
-    { name: "Green Peas (हरी मटर)", price: 50, image: "/greenpeas.jpg" },
-    { name: "Garlic (लहसुन)", price: 300, image: "/garlic.jpg" },
-    { name: "Ginger (अदरक)", price: 120, image: "/ginger.jpg" },
-    { name: "Bitter Gourd (करेला)", price: 45, image: "/bittergourd.jpg" },
-    { name: "Ladyfinger (भिंडी)", price: 90, image: "/ladyfinger.jpg" },
-    { name: "Cabbage (पत्ता गोभी)", price: 30, image: "/cabbage.jpg" },
-    { name: "Green Beans (हरी फलियां)", price: 60, image: "/greenbeans.jpg" },
-    { name: "Turnip (शलगम)", price: 40, image: "/turnip.jpg" },
-    { name: "Bell Pepper (शिमला मिर्च)", price: 250, image: "/bellpepper.jpg" },
+    { name: "Potato (आलू)", price: 25, originalPrice: 35, image: "/potato.jpg" },
+    { name: "Onion (प्याज)", price: 46, originalPrice: 60, image: "/onion.jpg" },
+    { name: "Tomato (टमाटर)", price: 20, originalPrice: 30, image: "/tomato.jpg" },
+    { name: "Carrot (गाजर)", price: 30, originalPrice: 40, image: "/carrot.jpg" },
+    { name: "Cucumber (खीरा)", price: 50, originalPrice: 60, image: "/cucumber.jpg" },
+    { name: "Capsicum (शिमला मिर्च)", price: 50, originalPrice: 60, image: "/capsicum.jpg" },
+    { name: "Broccoli (ब्रोकोली)", price: 70, originalPrice: 90, image: "/broccoli.jpg" },
+    { name: "Cauliflower (फूलगोभी)", price: 40, originalPrice: 50, image: "/cauliflower.jpg" },
+    { name: "Spinach (पालक)", price: 30, originalPrice: 40, image: "/spinach.jpg" },
+    { name: "Brinjal (बैंगन)", price: 30, originalPrice: 40, image: "/brinjal.jpg" },
+    { name: "Pumpkin (कद्दू)", price: 40, originalPrice: 50, image: "/pumpkin.jpg" },
+    { name: "Radish (मूली)", price: 30, originalPrice: 45, image: "/radish.jpg" },
+    { name: "Beetroot (चुकंदर)", price: 40, originalPrice: 60, image: "/beetroot.jpg" },
+    { name: "Mushroom (मशरूम)", price: 50, originalPrice: 60, image: "/mushroom.jpg" },
+    { name: "Sweet Corn (मीठी मकई)", price: 60, originalPrice: 80, image: "/sweetcorn.jpg" },
+    { name: "Green Peas (हरी मटर)", price: 50, originalPrice: 70, image: "/greenpeas.jpg" },
+    { name: "Garlic (लहसुन)", price: 300, originalPrice: 500, image: "/garlic.jpg" },
+    { name: "Ginger (अदरक)", price: 120, originalPrice: 150, image: "/ginger.jpg" },
+    { name: "Bitter Gourd (करेला)", price: 45, originalPrice: 60, image: "/bittergourd.jpg" },
+    { name: "Ladyfinger (भिंडी)", price: 90, originalPrice: 120, image: "/ladyfinger.jpg" },
+    { name: "Cabbage (पत्ता गोभी)", price: 30, originalPrice: 50, image: "/cabbage.jpg" },
+    { name: "Green Beans (हरी फलियां)", price: 60, originalPrice: 80, image: "/greenbeans.jpg" },
+    { name: "Turnip (शलगम)", price: 40, originalPrice: 55, image: "/turnip.jpg" },
+    { name: "Bell Pepper (शिमला मिर्च)", price: 250, originalPrice: 300, image: "/bellpepper.jpg" }
   ];
 
   const [cart, setCart] = useState<Vegetable[]>([]);
@@ -98,7 +99,9 @@ export default function Page() {
           <div key={veg.name} className="bg-white p-4 rounded-lg shadow text-center">
             <Image src={veg.image} alt={veg.name} width={200} height={150} className="w-full h-32 object-cover rounded" />
             <h2 className="text-xl font-semibold mt-2">{veg.name}</h2>
-            <p className="text-gray-600">₹{veg.price} / KG</p>
+            <p className="text-gray-600">
+              <span className="line-through text-red-500">₹{veg.originalPrice}</span> ₹{veg.price} / KG
+            </p>
             <button
               onClick={() => handleAddToCart(veg)}
               className="mt-2 px-4 py-2 text-white bg-green-500 hover:bg-green-600 rounded"
