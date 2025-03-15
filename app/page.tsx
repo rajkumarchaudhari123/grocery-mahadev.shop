@@ -6,10 +6,6 @@ import Image from "next/image";
 export default function Home() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
-
   return (
     <div className="container mx-auto p-8">
       <div>
@@ -21,7 +17,6 @@ export default function Home() {
           >
             <button 
               className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300"
-              onClick={toggleDropdown}
             >
               Shop Now
             </button>

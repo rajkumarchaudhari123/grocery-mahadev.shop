@@ -11,16 +11,15 @@ type Product = {
 
 export default function Page() {
   const products: Product[] = [
-    { name: "Apple", price: 230, image: "/apple.jpg" },
-    { name: "Banana", price: 70, image: "/banana.jpg" },
-    { name: "Orange", price: 130, image: "/orange.jpg" },
-    { name: "Grapes", price: 140, image: "/grapes.jpg" },
+    { name: "Apple", price: 235, image: "/apple.jpg" },
+    { name: "Banana (Dozen)", price: 80, image: "/banana.jpg" },
+    { name: "Orange", price: 150, image: "/orange.jpg" },
+    { name: "Grapes", price: 150, image: "/grapes.jpg" },
     { name: "Watermelon", price: 40, image: "/watermelon.jpg" },
     { name: "Papaya", price: 60, image: "/papaya.jpg" },
-    { name: "Pomegranate", price: 240, image: "/pomegranate.jpg" },
-    { name: "Guava (special)", price: 140, image: "/guava.jpg" },
-    { name: "Coconut", price: 55, image: "/coconut.jpg" },
-    { name: "Chikoo", price: 80, image: "/chikoo.jpg" },
+    { name: "Pomegranate", price: 260, image: "/pomegranate.jpg" },
+    { name: "Guava (special)", price: 150, image: "/guava.jpg" },
+    { name: "Coconut (1 piece)", price: 55, image: "/coconut.jpg" },
   ];
 
   const [cart, setCart] = useState<Product[]>([]);
